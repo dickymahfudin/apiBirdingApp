@@ -18,8 +18,15 @@ module.exports = {
         onUpdate: "cascade",
         onDelete: "cascade",
       },
-      birdSpecies: {
-        type: Sequelize.STRING,
+      birdSpeciesId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "birdSpecies",
+          key: "id",
+        },
+        onUpdate: "cascade",
+        onDelete: "cascade",
       },
       image: {
         type: Sequelize.STRING,

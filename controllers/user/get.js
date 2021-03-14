@@ -17,7 +17,7 @@ module.exports = async (req, res) => {
     attributes: {
       exclude: ["password"],
     },
-    order: [["createdAt", "ASC"]],
+    order: [["updatedAt", "DESC"]],
     where,
   });
   return res.status(200).json({

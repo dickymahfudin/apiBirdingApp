@@ -12,6 +12,7 @@ dotenv.config();
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const articlesRouter = require("./routes/articles");
+const speciesRouter = require("./routes/birdSpecies");
 
 const app = express();
 const diskStorage = multer.diskStorage({
@@ -39,5 +40,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/article", upload.single("image"), articlesRouter);
+app.use("/birdSpecies", speciesRouter);
 
 module.exports = app;

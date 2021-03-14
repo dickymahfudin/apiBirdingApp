@@ -12,12 +12,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
         as: "user",
       });
+      this.belongsTo(models.birdSpecies, {
+        foreignKey: "birdSpeciesId",
+        as: "birdSpecies",
+      });
     }
   }
   article.init(
     {
       userId: DataTypes.INTEGER,
-      birdSpecies: DataTypes.STRING,
+      birdSpeciesId: DataTypes.INTEGER,
       image: DataTypes.STRING,
       description: DataTypes.TEXT,
     },
