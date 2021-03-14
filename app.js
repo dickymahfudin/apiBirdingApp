@@ -27,6 +27,9 @@ const diskStorage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: diskStorage });
+const notFound = (req, res) => {
+  res.status(200).json({ status: "error", message: "Page Not Found" });
+};
 
 app.use(cors());
 app.use(bodyParser.json({ limit: "100mb" }));
@@ -42,4 +45,8 @@ app.use("/user", usersRouter);
 app.use("/article", upload.single("image"), articlesRouter);
 app.use("/birdSpecies", speciesRouter);
 
+app.get("*", notFound);
+app.post("*", notFound);
+app.delete("*", notFound);
+app.put("*", notFound);
 module.exports = app;
