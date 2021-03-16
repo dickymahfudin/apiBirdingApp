@@ -6,6 +6,9 @@ module.exports = async (req, res) => {
 
   const findArticle = await article.findByPk(id);
 
+  const url = process.env.BASE_URL;
+  const image = req.file && `${url}/images/${req.file.filename}`;
+
   if (!findArticle) {
     return res.status(409).json({
       status: "error",
@@ -13,7 +16,7 @@ module.exports = async (req, res) => {
     });
   }
 
-  const data = { userId, birdSpecies, description, publish };
+  const data = { userId, birdSpecies, description, publish, image };
   const updateArticle = await findArticle.update(data);
 
   return res.status(201).json({
