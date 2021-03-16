@@ -1,6 +1,6 @@
 const { user, article, birdSpecies } = require("../../models");
 module.exports = async (req, res) => {
-  const { userId, birdSpeciesId, description } = req.body;
+  const { userId, birdSpeciesId, description, publish } = req.body;
   const findUser = await user.findByPk(userId);
   const findBirdSpecies = await birdSpecies.findByPk(birdSpeciesId);
 
@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
     });
   }
 
-  const data = { userId, birdSpeciesId, image, description };
+  const data = { userId, birdSpeciesId, image, description, publish };
   const createdArticle = await article.create(data);
 
   return res.status(201).json({

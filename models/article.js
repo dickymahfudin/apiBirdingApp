@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       birdSpeciesId: DataTypes.INTEGER,
       image: DataTypes.STRING,
       description: DataTypes.TEXT,
+      publish: DataTypes.BOOLEAN,
     },
     {
       sequelize,

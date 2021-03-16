@@ -2,7 +2,7 @@ const { article } = require("../../models");
 
 module.exports = async (req, res) => {
   const { id } = req.params;
-  const { userId, birdSpecies, description } = req.body;
+  const { userId, birdSpecies, description, publish } = req.body;
 
   const findArticle = await article.findByPk(id);
 
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
     });
   }
 
-  const data = { userId, birdSpecies, description };
+  const data = { userId, birdSpecies, description, publish };
   const updateArticle = await findArticle.update(data);
 
   return res.status(201).json({
