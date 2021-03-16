@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    restart: always
     volumes:
       - ./:/usr/src/app
       - node_modules:/usr/src/app/node_modules

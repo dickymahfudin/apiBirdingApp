@@ -1,6 +1,13 @@
 const dotenv = require("dotenv");
 dotenv.config();
-const { DB_USER, DB_PASSWORD, DB_NAME, DB_HOST, DB_CONNECTION } = process.env;
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+  DB_HOST,
+  DB_CONNECTION,
+  TZ,
+} = process.env;
 
 const username = DB_USER;
 const password = DB_PASSWORD;
@@ -17,11 +24,11 @@ module.exports = {
     database,
     host,
     dialect,
+    logging: false,
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
+      dateStrings: true,
+      typeCast: true,
     },
+    timezone: TZ,
   },
 };
