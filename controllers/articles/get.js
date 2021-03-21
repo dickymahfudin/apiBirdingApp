@@ -2,13 +2,13 @@ const { article, user, birdSpecies } = require("../../models");
 
 module.exports = async (req, res) => {
   const { id, userId, birdSpeciesId, description, publish } = req.query;
-
+  const tempPublishB = publish === "true";
   const tempId = !id ? {} : { id };
   const tempUserId = !userId ? {} : { userId };
   const tempBirdSpecies = !birdSpeciesId ? {} : { birdSpeciesId };
   const tempDescription = !description ? {} : { description };
-  const tempPublish = !publish ? {} : { publish };
-
+  const tempPublish = !tempPublishB ? {} : { publish: tempPublishB };
+  console.log(tempPublish);
   const where = {
     ...tempId,
     ...tempUserId,
