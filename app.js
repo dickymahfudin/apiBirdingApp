@@ -13,6 +13,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const articlesRouter = require("./routes/articles");
 const speciesRouter = require("./routes/birdSpecies");
+const urlRouter = require("./routes/Url");
 
 const app = express();
 const diskStorage = multer.diskStorage({
@@ -44,6 +45,7 @@ app.use("/", indexRouter);
 app.use("/user", usersRouter);
 app.use("/article", upload.single("image"), articlesRouter);
 app.use("/birdSpecies", speciesRouter);
+app.use("/3d", urlRouter);
 
 app.get("*", notFound);
 app.post("*", notFound);
